@@ -1,0 +1,232 @@
+html, body ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+.top {
+    height: 100px;
+}
+.main {
+    margin: auto;
+    width: 1200px;
+}
+.top img {
+    margin-top: 15px;
+    cursor: pointer;
+}
+.nav {
+    height: 60px;
+    background-color: #2d5c9e;
+}
+.nav ul {
+    list-style: none;
+}
+.nav ul li {
+    float: left;
+    line-height: 60px;
+}
+.nav ul li:hover {
+    background-color: #003777;
+    cursor: pointer;
+}
+.el-dropdown-link {
+    color: #ffffff;
+    font-size: 15px;
+    display: block;
+    padding: 0 20px;
+    cursor: pointer;
+}
+.el-dropdown-link a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.el-dropdown-item {
+    padding: 0 20px !important;
+}
+.nav-sub {
+    color: #222222;
+    text-decoration: none;
+}
+.mar-20 {
+    margin-top: 20px;
+}
+.el-card {
+    height: 400px;
+}
+.el-calendar-day {
+    height: 40px !important;
+}
+
+/* 底部区域样式 */
+footer {
+    background: #113b75 url(../images/footer-bg.png) top center no-repeat;
+    height: 180px;
+    font-size: 14px;
+}
+footer h3 {
+    color: #fff;
+}
+footer .row {
+    padding: 20px 0;
+}
+footer p,
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #efefef;
+}
+footer ul {
+    padding-inline-start: 0;
+}
+footer ul li {
+    list-style: none;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+footer ul::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+.el-tabs__item {
+    font-size: 16px;
+}
+
+.content {
+
+}
+.content .title {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 80px;
+    text-align: center;
+}
+.content .date {
+    font-size: 14px;
+    text-align: center;
+    line-height: 50px;
+    color: #999999;
+}
+.content .date span {
+    padding: 0px 10px;
+}
+.content .txt {
+    clear: both;
+    font-size: 15px;
+    line-height: 30px;
+}
+.hot {
+    list-style: none;
+    font-size: 15px;
+}
+.hot li {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px dashed #cccccc;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.hot li span {
+    float: right;
+}
+.hot li a {
+    height: 40px;
+    line-height: 40px;
+    color: #222222;
+    text-decoration: none;
+}
+.hot li a:hover {
+    color: red;
+}
+.channel {
+    list-style: none;
+}
+.channel li {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px dotted #cccccc;
+}
+.channel li:last-child {
+    border-bottom: 0px;
+}
+.channel li a {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #222222;
+    text-decoration: none;
+}
+.channel li a:hover {
+    color: red;
+}
+.list {
+    list-style: none;
+}
+.list li {
+    line-height: 40px;
+    border-bottom: 1px dashed #cccccc;
+}
+.list li a {
+    height: 40px;
+    line-height: 40px;
+    color: #222222;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.list li a:hover {
+    color: red;
+}
+.list li p {
+    line-height: 30px;
+    color: #999999;
+    font-size: 14px;
+}
+.el-pagination {
+    margin-top: 30px;
+}
+.post-list {
+    list-style: none;
+}
+.post-list li {
+    line-height: 40px;
+    border-bottom: 1px dashed #cccccc;
+}
+.post-list li a {
+    height: 40px;
+    line-height: 40px;
+    color: #222222;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.post-list li a:hover {
+    color: red;
+}
+.post-list li p {
+    line-height: 40px;
+    color: #999999;
+    font-size: 14px;
+}
+.post-list li p span {
+    margin-right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

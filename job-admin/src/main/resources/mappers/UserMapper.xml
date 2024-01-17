@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmaw.job.mapper.UserMapper">
+
+    <resultMap type="com.xunmaw.job.entity.User" id="User">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="login_time" property="loginTime"/>
+    </resultMap>
+
+    <insert id="create" parameterType="user" keyProperty="id" useGeneratedKeys="true">
+        insert into tb_user(user_name, name, password, login_time)
+        values (#{userName}, #{name}, #{password}, NOW())
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from tb_user where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="user">
+        update tb_user
+        <set>
+            <if test="userName != null and userName != ''">user_name = #{userName},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="loginTime != null">login_time = #{loginTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="query" parameterType="user" resultMap="User">
+        select * from tb_user
+        <include refid="UserFindCriteria"/>
+    </select>
+
+    <select id="count" parameterType="user" resultType="int">
+        select count(1) from tb_user
+        <include refid="UserFindCriteria"/>
+    </select>
+
+    <select id="detail" parameterType="int" resultMap="User">
+        select * from tb_user where id = #{id}
+    </select>
+
+    <sql id="UserFindCriteria">
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="userName != null and userName != ''">and user_name = #{userName}</if>
+            <if test="name != null and name != ''">and name like concat('%',#{name},'%')</if>
+            <if test="password != null and password != ''">and password = #{password}</if>
+        </where>
+    </sql>
+</mapper>

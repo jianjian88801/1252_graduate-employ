@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmaw.job.mapper.ProfessionMapper">
+
+    <resultMap type="com.xunmaw.job.entity.Profession" id="Profession">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+
+    <insert id="create" keyProperty="id" useGeneratedKeys="true" parameterType="profession">
+		insert into tb_profession(
+			name,
+			parent_id
+		)values(
+			#{name},
+			#{parentId}
+		)
+	</insert>
+
+    <delete id="delete">
+		delete from tb_profession where id = #{id}
+	</delete>
+
+    <update id="update">
+        update tb_profession set
+        <if test="name != null and name != ''">name = #{name},</if>
+        <if test="parentId != null">parent_id = #{parentId}</if>
+        where id = #{id}
+    </update>
+
+    <select id="query" resultMap="Profession">
+        select * from tb_profession
+        <include refid="ProfessionFindCriteria"/>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(1) from tb_profession
+        <include refid="ProfessionFindCriteria"/>
+    </select>
+
+    <select id="detail" resultMap="Profession">
+		select * from tb_profession where id = #{id}
+	</select>
+
+    <sql id="ProfessionFindCriteria">
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="name != null and name != ''">and name = #{name}</if>
+            <if test="parentId != null">and parent_id = #{parentId}</if>
+        </where>
+    </sql>
+
+</mapper>

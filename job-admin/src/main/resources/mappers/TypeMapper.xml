@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmaw.job.mapper.TypeMapper">
+
+    <resultMap type="com.xunmaw.job.entity.Type" id="Type">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <insert id="create" keyProperty="id" useGeneratedKeys="true" parameterType="type">
+		insert into tb_type(
+			name
+		)values(
+			#{name}
+		)
+	</insert>
+
+    <delete id="delete">
+		delete from tb_type where id = #{id}
+	</delete>
+
+    <update id="update">
+        update tb_type set
+        <if test="name != null and name != ''">name = #{name}</if>
+        where id = #{id}
+    </update>
+
+    <select id="query" resultMap="Type">
+        select * from tb_type
+        <include refid="TypeFindCriteria"/>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(1) from tb_type
+        <include refid="TypeFindCriteria"/>
+    </select>
+
+    <select id="detail" resultMap="Type">
+		select * from tb_type where id = #{id}
+	</select>
+
+    <sql id="TypeFindCriteria">
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="name != null and name != ''">and name = #{name}</if>
+        </where>
+    </sql>
+
+</mapper>

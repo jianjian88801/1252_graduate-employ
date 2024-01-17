@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xunmaw.job.mapper.CertificateMapper">
+
+    <resultMap type="com.xunmaw.job.entity.Certificate" id="Certificate">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="file" property="file"/>
+        <result column="obtain_date" property="obtainDate"/>
+        <result column="resume_id" property="resumeId"/>
+    </resultMap>
+
+    <insert id="create" keyProperty="id" useGeneratedKeys="true" parameterType="certificate">
+		insert into tb_certificate(
+			id,
+			name,
+			file,
+			obtain_date,
+			resume_id
+		)values(
+			#{id},
+			#{name},
+			#{file},
+			#{obtainDate},
+			#{resumeId}
+		)
+	</insert>
+
+    <delete id="delete">
+		delete from tb_certificate where id = #{id}
+	</delete>
+
+    <update id="update">
+        update tb_certificate set
+        <if test="name != null and name != ''">name = #{name},</if>
+        <if test="file != null and file != ''">file = #{file},</if>
+        <if test="obtainDate != null">obtain_date = #{obtainDate},</if>
+        <if test="resumeId != null">resume_id = #{resumeId}</if>
+        where id = #{id}
+    </update>
+
+    <select id="query" resultMap="Certificate">
+        select * from tb_certificate
+        <include refid="CertificateFindCriteria"/>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(1) from tb_certificate
+        <include refid="CertificateFindCriteria"/>
+    </select>
+
+    <select id="detail" resultMap="Certificate">
+		select * from tb_certificate where id = #{id}
+	</select>
+
+    <sql id="CertificateFindCriteria">
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="name != null and name != ''">and name like concat('%', #{name}, '%')</if>
+            <if test="file != null and file != ''">and file = #{file}</if>
+            <if test="resumeId != null">and resume_id = #{resumeId}</if>
+        </where>
+    </sql>
+
+</mapper>
